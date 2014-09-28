@@ -1,0 +1,106 @@
+
+
+-----MySql-----
+
+*) install
+*) add database etc
+
+----- Apache tomcat------
+
+Tomcat
+
+    *)Install apache tomcat 7 or 8
+    *)apache-tomcat-8.0.8\conf\context.xml:
+
+		<Resource name="jdbc/TestappDS" auth="Container" type="javax.sql.DataSource"
+               maxActive="100" maxIdle="30" maxWait="10000"
+               username="" password="" driverClassName="com.mysql.jdbc.Driver"
+               url="jdbc:mysql://localhost:3306/pi"/>
+
+    *)apache-tomcat-8.0.8\lib
+    add mysql.jar (eg mysql-connector-java-5.1.30-bin.jar)
+
+------SQL------
+
+drop table Game;
+drop table Team;
+drop table Player;
+
+
+
+CREATE TABLE `Player` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) DEFAULT NULL,
+  `alias` varchar(255) DEFAULT NULL,
+  `pw` varchar(30) DEFAULT NULL,
+  `age` int(3) DEFAULT NULL,
+  `gender` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=latin1;
+
+
+
+CREATE TABLE `Team` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `player_1` bigint(20) NOT NULL,
+  `player_2` bigint(20) NOT NULL,
+  PRIMARY KEY (`id`),
+  FOREIGN KEY (player_1)
+        REFERENCES Player(id),
+  FOREIGN KEY (player_2)
+        REFERENCES Player(id)
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=latin1;
+
+CREATE TABLE `Game` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `team_1` bigint(20) DEFAULT NULL,
+  `team_2` bigint(20) DEFAULT NULL,
+  `score_team_1` int(2) DEFAULT 0,
+  `score_team_2` int(2) DEFAULT 0,
+  `active` tinyint(1) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  FOREIGN KEY (team_1)
+        REFERENCES Team(id),
+  FOREIGN KEY (team_2)
+        REFERENCES Team(id)
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=latin1;
+
+
+INSERT INTO `Player`
+(`name`,`alias`,`pw`,`age`,`gender`)
+VALUES('Pietje','Alias','geheim',12,'M');
+
+
+INSERT INTO `Player`
+(`name`,`alias`,`pw`,`age`,`gender`)
+VALUES('Marietje','Alias','geheim',12,'F');
+
+INSERT INTO `Player`
+(`name`,`alias`,`pw`,`age`,`gender`)
+VALUES('Kareltje','Alias','geheim',12,'M');
+
+
+INSERT INTO `Player`
+(`name`,`alias`,`pw`,`age`,`gender`)
+VALUES('Mientje','Alias','geheim',12,'F');
+
+
+
+INSERT INTO `Team`
+(`player_1`,`player_2`)
+VALUES( (SELECT id FROM Player LIMIT 0,1),(SELECT id FROM Player LIMIT 1,1));
+
+INSERT INTO `Team`
+(`player_1`,`player_2`)
+VALUES( (SELECT id FROM Player LIMIT 2,1),(SELECT id FROM Player LIMIT 3,1));
+
+
+INSERT INTO `Game`
+(`team_1`,`team_2`,`score_team_1`,`score_team_2`, `active`)
+VALUES((SELECT id FROM Team LIMIT 0,1),(SELECT id FROM Team LIMIT 1,1),3,1, 1);
+
+
+------einde SQL------
+
+
+http://software.danielwatrous.com/restful-java-servlet/

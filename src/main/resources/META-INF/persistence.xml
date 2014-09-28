@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence xmlns="http://java.sun.com/xml/ns/persistence"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://java.sun.com/xml/ns/persistence
+    http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd" version="2.0">
+
+<!--<persistence xmlns="http://java.sun.com/xml/ns/persistence" version="2.0">-->
+
+
+    <persistence-unit name="testapp" transaction-type="RESOURCE_LOCAL">
+      <provider>org.hibernate.ejb.HibernatePersistence</provider>
+      <non-jta-data-source>java:/comp/env/jdbc/TestappDS</non-jta-data-source>
+      <properties>
+          <property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect"/>
+
+        <property name="hibernate.cache.provider_class" value="org.hibernate.cache.HashtableCacheProvider" />
+        <property name="hibernate.format_sql" value="true" />
+        <property name="hibernate.show_sql" value="false" />
+        <property name="hibernate.jdbc.batch_size" value="20" />
+        <property name="hibernate.cache.use_query_cache" value="false" />
+        <property name="hibernate.hbm2ddl.auto" value="validate" />
+        <property name="hibernate.cache.use_second_level_cache" value="false"/>
+
+          <property name="javax.persistence.validation.mode" value="none"/>
+      </properties>
+    </persistence-unit>
+</persistence>

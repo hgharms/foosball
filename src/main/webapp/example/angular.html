@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AngularJS example</title>
+    <link rel="stylesheet" href="/foosball/css/style.css"/>
+</head>
+<body ng-app="_app" ng-controller="_controller">
+
+<section id="playerSection" class="container">
+    <!--<button id="add-user" class="btn btn-primary" ng-click="addPlayer()">Add user</button>-->
+    <article ng-repeat="player in players" class="note">
+        <h1><span class="title">{{ player.name}} {{player.age}} {{player.gender}}</span>
+            <!--<button class="btn btn_remove" ng-click="remove(player)">-</button>-->
+        </h1>
+    </article>
+</section>
+
+</body>
+<script src="/foosball/scripts/lib/angular.js"></script>
+<script src="/foosball/scripts/lib/angular-mocks.js"></script>
+<script src="/foosball/scripts/lib/angular-resource.js"></script>
+<script src="/foosball/scripts/_angular.js"></script>
+</html>

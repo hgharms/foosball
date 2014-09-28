@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="dataSourceStorage">
+  <data-source source="LOCAL" name="MySQL - bankzaken@localhost" uuid="fbeee782-5239-4009-8014-df8c970090ba">
+    <database-info product="MySQL" version="5.5.22" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.29 ( Revision: alexander.soklakov@oracle.com-20140120140810-s44574olh90i6i4l )">
+      <extra-name-characters>#@</extra-name-characters>
+      <identifier-quote-string>`</identifier-quote-string>
+    </database-info>
+    <case-sensitivity plain-identifiers="lower" quoted-identifiers="lower"/>
+    <schema name="" catalog="bankzaken"/>
+    <table name="blogentry" schema="" catalog="bankzaken" type="TABLE">
+      <column name="id" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="version" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="content" sqlType="LONGTEXT" precision="2147483647" scale="0" nullable="true" jdbcType="-1"/>
+      <column name="created" sqlType="DATETIME" precision="19" scale="0" nullable="true" jdbcType="93"/>
+      <column name="title" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="author_id" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="FKB03A7DD0B65720DC" columns="author_id" ref-table="user" ref-schema="" ref-catalog="bankzaken" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <exported-key name="FK9BDE863F514F5C18" table="comment" schema="" catalog="bankzaken" columns="blogEntry_id"/>
+      <index name="FKB03A7DD0B65720DC" unique="false" columns="author_id"/>
+    </table>
+    <table name="comment" schema="" catalog="bankzaken" type="TABLE">
+      <column name="id" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="version" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="content" sqlType="LONGTEXT" precision="2147483647" scale="0" nullable="true" jdbcType="-1"/>
+      <column name="created" sqlType="DATETIME" precision="19" scale="0" nullable="true" jdbcType="93"/>
+      <column name="author_id" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="blogEntry_id" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="FK9BDE863F514F5C18" columns="blogEntry_id" ref-table="blogentry" ref-schema="" ref-catalog="bankzaken" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="FK9BDE863FB65720DC" columns="author_id" ref-table="user" ref-schema="" ref-catalog="bankzaken" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="FK9BDE863F514F5C18" unique="false" columns="blogEntry_id"/>
+      <index name="FK9BDE863FB65720DC" unique="false" columns="author_id"/>
+    </table>
+    <table name="game" schema="" catalog="bankzaken" type="TABLE">
+      <column name="id" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5" autoIncrement="true"/>
+      <column name="team_1" sqlType="BIGINT" precision="19" scale="0" nullable="true" jdbcType="-5"/>
+      <column name="team_2" sqlType="BIGINT" precision="19" scale="0" nullable="true" jdbcType="-5"/>
+      <column name="score_team_1" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4" def="MA=="/>
+      <column name="score_team_2" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4" def="MA=="/>
+      <column name="active" sqlType="TINYINT" precision="3" scale="0" nullable="true" jdbcType="-6"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="game_ibfk_1" columns="team_1" ref-table="team" ref-schema="" ref-catalog="bankzaken" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="game_ibfk_2" columns="team_2" ref-table="team" ref-schema="" ref-catalog="bankzaken" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+    </table>
+    <table name="hibernate_sequence" schema="" catalog="bankzaken" type="TABLE">
+      <column name="next_val" sqlType="BIGINT" precision="19" scale="0" nullable="true" jdbcType="-5"/>
+    </table>
+    <table name="member" schema="" catalog="bankzaken" type="TABLE">
+      <column name="id" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="email" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="name" sqlType="VARCHAR" precision="25" scale="0" nullable="false" jdbcType="12"/>
+      <column name="phone_number" sqlType="VARCHAR" precision="12" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <index name="email" unique="true" columns="email"/>
+      <index name="UK_9qv6yhjqm8iafto8qk452gx8h" unique="true" columns="email"/>
+    </table>
+    <table name="player" schema="" catalog="bankzaken" type="TABLE">
+      <column name="id" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5" autoIncrement="true"/>
+      <column name="name" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="alias" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="pw" sqlType="VARCHAR" precision="30" scale="0" nullable="true" jdbcType="12"/>
+      <column name="age" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="gender" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <exported-key name="team_ibfk_1" table="team" schema="" catalog="bankzaken" columns="player_1"/>
+      <exported-key name="team_ibfk_2" table="team" schema="" catalog="bankzaken" columns="player_2"/>
+    </table>
+    <table name="rabotxdownloadfile" schema="" catalog="bankzaken" type="TABLE">
+      <column name="id" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="version" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="accountNumber" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="amount" sqlType="DECIMAL" precision="19" scale="2" nullable="true" jdbcType="3"/>
+      <column name="counterAccountNumber" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="currency" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="date" sqlType="TINYBLOB" precision="255" scale="0" nullable="true" jdbcType="-2"/>
+      <column name="debetLine" sqlType="TINYINT" precision="3" scale="0" nullable="false" jdbcType="-6"/>
+      <column name="description" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="fileName" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="paymentDescription" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="processingDate" sqlType="TINYBLOB" precision="255" scale="0" nullable="true" jdbcType="-2"/>
+      <column name="txCode" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="id"/>
+    </table>
+    <table name="team" schema="" catalog="bankzaken" type="TABLE">
+      <column name="id" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5" autoIncrement="true"/>
+      <column name="player_1" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="player_2" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="team_ibfk_1" columns="player_1" ref-table="player" ref-schema="" ref-catalog="bankzaken" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="team_ibfk_2" columns="player_2" ref-table="player" ref-schema="" ref-catalog="bankzaken" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <exported-key name="game_ibfk_1" table="game" schema="" catalog="bankzaken" columns="team_1"/>
+      <exported-key name="game_ibfk_2" table="game" schema="" catalog="bankzaken" columns="team_2"/>
+    </table>
+    <table name="tximportfile" schema="" catalog="bankzaken" type="TABLE">
+      <column name="id" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="version" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="fileName" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="numberOfCreditLines" sqlType="DECIMAL" precision="19" scale="2" nullable="true" jdbcType="3"/>
+      <column name="numberOfDebitLines" sqlType="DECIMAL" precision="19" scale="2" nullable="true" jdbcType="3"/>
+      <column name="processingDate" sqlType="TINYBLOB" precision="255" scale="0" nullable="true" jdbcType="-2"/>
+      <column name="totalCreditAmount" sqlType="DECIMAL" precision="19" scale="2" nullable="true" jdbcType="3"/>
+      <column name="totalDebitAmount" sqlType="DECIMAL" precision="19" scale="2" nullable="true" jdbcType="3"/>
+      <column name="totalNumberOfLines" sqlType="DECIMAL" precision="19" scale="2" nullable="true" jdbcType="3"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <exported-key name="FK3D2DD2DDB9F70FAB" table="tximportline" schema="" catalog="bankzaken" columns="txImportFile_id"/>
+    </table>
+    <table name="tximportline" schema="" catalog="bankzaken" type="TABLE">
+      <column name="DISCRIMINATOR" sqlType="VARCHAR" precision="31" scale="0" nullable="false" jdbcType="12"/>
+      <column name="id" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="version" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="accountNumber" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="amount" sqlType="DECIMAL" precision="19" scale="2" nullable="true" jdbcType="3"/>
+      <column name="counterAccountNumber" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="currency" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="debetLine" sqlType="TINYINT" precision="3" scale="0" nullable="false" jdbcType="-6"/>
+      <column name="description" sqlType="LONGTEXT" precision="2147483647" scale="0" nullable="true" jdbcType="-1"/>
+      <column name="executionDate" sqlType="TINYBLOB" precision="255" scale="0" nullable="true" jdbcType="-2"/>
+      <column name="paymentDescription" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="positiveAmount" sqlType="DECIMAL" precision="19" scale="2" nullable="true" jdbcType="3"/>
+      <column name="txCode" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="category_id" sqlType="BIGINT" precision="19" scale="0" nullable="true" jdbcType="-5"/>
+      <column name="txImportFile_id" sqlType="BIGINT" precision="19" scale="0" nullable="true" jdbcType="-5"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="FK3D2DD2DD236FD143" columns="category_id" ref-table="txlinecategory" ref-schema="" ref-catalog="bankzaken" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="FK3D2DD2DDB9F70FAB" columns="txImportFile_id" ref-table="tximportfile" ref-schema="" ref-catalog="bankzaken" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="FK3D2DD2DD236FD143" unique="false" columns="category_id"/>
+      <index name="FK3D2DD2DDB9F70FAB" unique="false" columns="txImportFile_id"/>
+    </table>
+    <table name="txlinecategory" schema="" catalog="bankzaken" type="TABLE">
+      <column name="id" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="version" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="description" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="shortName" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <exported-key name="FK3D2DD2DD236FD143" table="tximportline" schema="" catalog="bankzaken" columns="category_id"/>
+    </table>
+    <table name="user" schema="" catalog="bankzaken" type="TABLE">
+      <column name="id" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="version" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="firstname" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="password" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="surname" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="username" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <exported-key name="FKB03A7DD0B65720DC" table="blogentry" schema="" catalog="bankzaken" columns="author_id"/>
+      <exported-key name="FK9BDE863FB65720DC" table="comment" schema="" catalog="bankzaken" columns="author_id"/>
+      <index name="username" unique="true" columns="username"/>
+    </table>
+  </data-source>
+</component>
