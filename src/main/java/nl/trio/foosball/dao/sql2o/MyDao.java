@@ -2,9 +2,6 @@ package nl.trio.foosball.dao.sql2o;
 
 import nl.trio.foosball.model.Game;
 import nl.trio.foosball.model.Player;
-import org.sql2o.Connection;
-import org.sql2o.Query;
-import org.sql2o.Sql2o;
 
 import java.util.List;
 

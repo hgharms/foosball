@@ -1,3 +1,4 @@
+/*
 function getRest(url, successCallBackFunction) {
     $.ajax({
         type: 'GET',
@@ -10,5 +11,4 @@ function getRest(url, successCallBackFunction) {
         }
     });
 }
-
-
+*/

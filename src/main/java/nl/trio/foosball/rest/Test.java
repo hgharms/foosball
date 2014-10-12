@@ -1,20 +1,16 @@
 package nl.trio.foosball.rest;
 
 import com.google.gson.Gson;
-import nl.trio.foosball.dao.jpa.Dba;
 import nl.trio.foosball.dao.sql2o.MyDao;
-import nl.trio.foosball.model.Gender;
 import nl.trio.foosball.model.Player;
+
+import javax.ws.rs.GET;
+import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
+import java.util.List;
 
 //import javax.persistence.EntityManager;
 //import javax.persistence.Query;
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
-import javax.ws.rs.Produces;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
 @Path("json")
 public class Test {

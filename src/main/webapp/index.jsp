@@ -10,8 +10,7 @@
 </head>
 
 <body>
-<p><a href="example/rest.jsp">Rest example</a></p>
 <p><a href="example/socket.jsp">Socket example</a></p>
-<p><a  href="example/angular.html">Angular Rest example</a></p> te traag op pi, dus pom uitgecommdentariseert
+<p><a  href="example/angular.html">Angular Rest example, traag met iig deployen..</a></p>
 </body>
 </html>
