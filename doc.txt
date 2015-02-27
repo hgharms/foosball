@@ -1,26 +1,58 @@
 
+Desktop:
+Install Mysql
+Install Java 8.
+Create Database + tables (zie onder).
+Install: tomcat 8 apache-tomcat-8.0.18
+Add datasourse:
+    *)apache-tomcat-8.0.8\conf\context.xml:
+
+		<Resource name="jdbc/TestappDS" auth="Container" type="javax.sql.DataSource"
+               maxActive="100" maxIdle="30" maxWait="10000"
+               username="root" password="TODO" driverClassName="com.mysql.jdbc.Driver"
+               url="jdbc:mysql://localhost:3306/foosball"/>
+
+IDEA:
+- check out from version control, github:
+  https://github.com/hgharms/foosball.git
+- create run configuration
+  * Tomcat server
+  * add foosball.war to deployment tab.
+  * set Application context to /foosball (deployment tab)
+
+
+
+
+-----------------------
+PI:
+
+
+
+-------Pi4J-----
+curl -s get.pi4j.com | sudo bash
 
 -----MySql-----
 
-*) install
-*) add database etc
+sudo apt-get mysql-server geloof ik.
 
 ----- Apache tomcat------
 
 Tomcat
 
-    *)Install apache tomcat 7 or 8
+    *)Install apache tomcat 8 apache-tomcat-8.0.18.tar.gz
+    /opt/apache-tomcat-8.0.18
     *)apache-tomcat-8.0.8\conf\context.xml:
 
 		<Resource name="jdbc/TestappDS" auth="Container" type="javax.sql.DataSource"
                maxActive="100" maxIdle="30" maxWait="10000"
-               username="" password="" driverClassName="com.mysql.jdbc.Driver"
-               url="jdbc:mysql://localhost:3306/pi"/>
-
-    *)apache-tomcat-8.0.8\lib
-    add mysql.jar (eg mysql-connector-java-5.1.30-bin.jar)
+               username="root" password="TODO" driverClassName="com.mysql.jdbc.Driver"
+               url="jdbc:mysql://localhost:3306/foosball"/>
 
 ------SQL------
+
+create database foosball;
+
+use database foosball;
 
 drop table Game;
 drop table Team;
@@ -101,6 +133,3 @@ VALUES((SELECT id FROM Team LIMIT 0,1),(SELECT id FROM Team LIMIT 1,1),3,1, 1);
 
 
 ------einde SQL------
-
-
-http://software.danielwatrous.com/restful-java-servlet/

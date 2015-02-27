@@ -45,11 +45,7 @@ public class ArduinoListener {
   }
 
   public boolean isDummy(){
-//    System.out.println(System.getProperty("os.name"));
-//    System.out.println(System.getProperty("os.arch"));
-//    return false; //!System.getenv("PATH").contains("/usr/local/sbin");
-//    return !System.getenv("PATH").contains("/usr/local/sbin");//tja
-    return true;
+    return true;//TODO property
   }
 
   public String getCurrentScore(){
