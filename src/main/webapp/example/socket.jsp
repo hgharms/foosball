@@ -59,7 +59,7 @@ function test() {
 
 <body>
 <input type="text" id="test">
-<input type="submit" value="Sent" onclick="test();"/>
+<input type="submit" value="Send" onclick="test();"/>
 <div id="blaat"><p>Output:</p></div>
 </body>
 </html>

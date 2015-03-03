@@ -15,9 +15,10 @@ Add datasourse:
 IDEA:
 - check out from version control, github:
   https://github.com/hgharms/foosball.git
+- File > Open > foosball/pom.xml
 - create run configuration
-  * Tomcat server
-  * add foosball.war to deployment tab.
+  * Tomcat server > Local
+  * add artifact foosball.war to deployment tab.
   * set Application context to /foosball (deployment tab)
 
 
