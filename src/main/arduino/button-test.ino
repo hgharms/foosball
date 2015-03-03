@@ -1,25 +1,23 @@
 
-int score1_plus = 6;
-int score1_min  = 5;
-int reset       = 4;
-int score2_plus = 3;
-int score2_min  = 2;
+const int score1_plus = 6;
+const int score1_min  = 5;
+const int reset       = 4;
+const int score2_plus = 3;
+const int score2_min  = 2;
 
 void setup() {
 
   // configure input pins
   pinMode(score1_plus, INPUT);
   pinMode(score1_min,  INPUT);
-  pinMode(score2_plus, INPUT);
-  pinMode(score2_min,  INPUT);
-  pinMode(reset,       INPUT);
+  pinMode(score2_plus, INPUT_PULLUP);
+  pinMode(score2_min,  INPUT_PULLUP);
+  pinMode(reset,       INPUT_PULLUP);
 
-  // switch on internal pull-up resistors
+  // switch on internal pull-up resistors for the 
+  // inputs that are configured as INPUT iso INPUT_PULLUP
   digitalWrite(score1_plus, HIGH);
   digitalWrite(score1_min,  HIGH);
-  digitalWrite(score2_plus, HIGH);
-  digitalWrite(score2_min,  HIGH);
-  digitalWrite(reset,  HIGH);
 
   Serial.begin(9600);
   Serial.println("Button test");
@@ -32,7 +30,7 @@ void loop() {
   if (buttonPressed(score2_min))  Serial.println("Scoreboard 2 - Min");
   if (buttonPressed(reset))       Serial.println("Reset");
   
-  delay(500);
+  delay(100);
 }
 
 boolean buttonPressed(int button) {
