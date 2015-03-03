@@ -13,7 +13,7 @@
 var websocket = null;
 
 function connect(){
- websocket = new WebSocket("ws://localhost:8080/foosball/socket"); //TODO raspberry pi url...
+ websocket = new WebSocket("ws://"+ location.host+"/foosball/socket");
  console.log("connected" + websocket);
  websocket.onmessage = function(evt) { onMessage(evt) };
  websocket.onerror = function(evt) { onError(evt) };
